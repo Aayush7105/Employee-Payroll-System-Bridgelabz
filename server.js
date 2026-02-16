@@ -3,7 +3,7 @@ const app = express();
 const port = 3000;
 import { readFile, writeFile } from "./modules/fileHandler.js";
 let employees = [];
-
+app.set("view-engine", "ejs");
 (async () => {
   const data = await readFile("./employees.json", "utf-8");
   employees = JSON.parse(data);
