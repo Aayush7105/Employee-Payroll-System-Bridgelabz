@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Employee Payroll Dashboard</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <main class="container">
+      <h1>Employee Payroll Dashboard</h1>
+
+      <% if (!employees || employees.length === 0) { %>
+      <p class="empty-state">No employee records found.</p>
+      <% } else { %>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Position</th>
+              <th>Department</th>
+              <th>Basic Salary</th>
+              <th>Tax (10%)</th>
+              <th>Net Salary</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% employees.forEach((employee) => { %>
+            <tr>
+              <td><%= employee.id %></td>
+              <td><%= employee.name %></td>
+              <td><%= employee.position %></td>
+              <td><%= employee.department %></td>
+              <td>
+                <input
+                  type="number"
+                  min="0"
+                  step="0.01"
+                  class="basic-salary"
+                  value="<%= employee.salary %>"
+                />
+              </td>
+              <td class="tax-cell"></td>
+              <td class="net-cell"></td>
+            </tr>
+            <% }); %>
+          </tbody>
+        </table>
+      </div>
+      <% } %>
+    </main>
+
+    <script>
+      const formatCurrency = (value) =>
+        value.toLocaleString("en-US", {
+          style: "currency",
+          currency: "USD",
+          minimumFractionDigits: 2,
+          maximumFractionDigits: 2,
+        });
+
+      const updateRow = (row) => {
+        const salaryInput = row.querySelector(".basic-salary");
+        const taxCell = row.querySelector(".tax-cell");
+        const netCell = row.querySelector(".net-cell");
+
+        const basicSalary = Math.max(0, Number(salaryInput.value) || 0);
+        const tax = basicSalary * 0.1;
+        const netSalary = basicSalary - tax;
+
+        taxCell.textContent = formatCurrency(tax);
+        netCell.textContent = formatCurrency(netSalary);
+      };
+
+      document.querySelectorAll("tbody tr").forEach((row) => {
+        const salaryInput = row.querySelector(".basic-salary");
+        updateRow(row);
+        salaryInput.addEventListener("input", () => updateRow(row));
+      });
+    </script>
+  </body>
+</html>

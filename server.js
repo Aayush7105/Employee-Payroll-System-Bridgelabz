@@ -1,16 +1,17 @@
 import express from "express";
 const app = express();
 const port = 3000;
-import { readFile, writeFile } from "./modules/fileHandler.js";
+import { readFile } from "./modules/fileHandler.js";
 let employees = [];
-app.set("view-engine", "ejs");
+app.set("view engine", "ejs");
+app.use(express.static("public"));
 (async () => {
   const data = await readFile("./employees.json", "utf-8");
   employees = JSON.parse(data);
 })();
 
 app.get("/", (req, res) => {
-  res.send("Welcome to Employee Payroll System");
+  res.render("index", { employees });
 });
 
 app.get("/employees", (req, res) => {
