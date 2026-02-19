@@ -33,5 +33,14 @@
     "position": "Software Engineer",
     "department": "IT",
     "salary": 90000
+  },
+  {
+    "id": 6,
+    "name": "John snow",
+    "position": "bot",
+    "department": [
+      "IT"
+    ],
+    "salary": 21000
   }
 ]
