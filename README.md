@@ -329,9 +329,9 @@ http://localhost:3000
 ## 12. Suggested Improvements
 
 1. Keep a single shared ID generator for all create routes.
-2. Add input validation (schema-based validation like Joi/Zod).
-3. Normalize `department` to always be an array.
-4. Handle zero-employee average safely.
-5. Add a `start` script to `package.json`.
-6. Add tests for routes and utility functions.
-7. Move persistence from JSON file to a database (SQLite/PostgreSQL/MongoDB) for scaling.
+   cod2. Add input validation (schema-based validation like Joi/Zod).
+2. Normalize `department` to always be an array.
+3. Handle zero-employee average safely.
+4. Add a `start` script to `package.json`.
+5. Add tests for routes and utility functions.
+6. Move persistence from JSON file to a database (SQLite/PostgreSQL/MongoDB) for scaling.
