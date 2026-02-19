@@ -53,6 +53,7 @@ app.post("/add", async (req, res) => {
   const newEmployee = {
     id: getNextID(),
     name: req.body.name,
+    dob: req.body.dob,
     position: req.body.position,
     department: Array.isArray(req.body.department)
       ? req.body.department
@@ -86,6 +87,7 @@ app.post("/edit/:id", async (req, res) => {
     employees[index] = {
       id: employeeId,
       name: req.body.name,
+      dob: req.body.dob,
       position: req.body.position,
       department: Array.isArray(req.body.department)
         ? req.body.department
@@ -131,8 +133,10 @@ app.get("/employees/:id", (req, res) => {
 });
 
 app.post("/employees", async (req, res) => {
-  const newEmployee = req.body;
-  newEmployee.id = getNextAvailableId();
+  const newEmployee = {
+    ...req.body,
+    id: getNextID(),
+  };
   employees.push(newEmployee);
   try {
     await writeFile("./employees.json", JSON.stringify(employees, null, 2));

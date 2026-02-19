@@ -89,6 +89,7 @@
                 <tr>
                     <th>ID</th>
                     <th>Name</th>
+                    <th>DOB</th>
                     <th>Position</th>
                     <th>Department</th>
                     <th>Basic Salary</th>
@@ -105,6 +106,7 @@
                     <tr>
                         <td><%= employee.id %></td>
                         <td><%= employee.name %></td>
+                        <td><%= employee.dob || '-' %></td>
                         <td><%= employee.position %></td>
                         <td><%= deptDisplay %></td>
                         <td>₹<%= employee.salary.toFixed(2) %></td>

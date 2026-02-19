@@ -22,6 +22,11 @@
                 <label for="position">Position:</label>
                 <input type="text" id="position" name="position" value="<%= employee.position %>" required>
             </div>
+
+            <div class="form-group">
+                <label for="dob">Date of Birth:</label>
+                <input type="date" id="dob" name="dob" value="<%= employee.dob || '' %>" required>
+            </div>
             
             <div class="dropdown">
                 <label for="department">Department:</label>

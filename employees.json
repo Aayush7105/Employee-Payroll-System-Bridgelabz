@@ -2,45 +2,11 @@
   {
     "id": 1,
     "name": "Aayush",
-    "position": "Software Engineer",
-    "department": "IT",
-    "salary": 70000
-  },
-  {
-    "id": 2,
-    "name": "Aayush",
-    "position": "Software Engineer",
-    "department": "IT",
-    "salary": 80000
-  },
-  {
-    "id": 3,
-    "name": "Aayush",
-    "position": "Software Engineer",
-    "department": "IT",
-    "salary": 90000
-  },
-  {
-    "id": 4,
-    "name": "Aayush",
-    "position": "Software Engineer",
-    "department": "IT",
-    "salary": 40000
-  },
-  {
-    "id": 5,
-    "name": "Aayush",
-    "position": "Software Engineer",
-    "department": "IT",
-    "salary": 90000
-  },
-  {
-    "id": 6,
-    "name": "John snow",
-    "position": "bot",
+    "dob": "2005-01-13",
+    "position": "Fullstack Developer",
     "department": [
       "IT"
     ],
-    "salary": 21000
+    "salary": 50000
   }
 ]
