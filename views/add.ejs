@@ -6,57 +6,62 @@
     <title>Add Employee</title>
     <link rel="stylesheet" href="/style.css" />
   </head>
-  <body>
-    <div class="add-container">
-      <div class="add-heading">
-        <h1>Add New Employee</h1>
-      </div>
-
-      <form action="/add" method="POST" class="employee-form">
-        <div class="form-group">
-          <label for="name">Employee Name:</label>
-          <input type="text" id="name" name="name" required />
-        </div>
-
-        <div class="form-group">
-          <label for="position">Position:</label>
-          <input type="text" id="position" name="position" required />
-        </div>
-
-        <div class="form-group">
-          <label for="dob">Date of Birth:</label>
-          <input type="date" id="dob" name="dob" required />
-        </div>
-
-        <div class="dropdown">
-          <label for="department">Department:</label>
-          <select id="department" name="department" multiple required>
-            <option value="IT">IT</option>
-            <option value="HR">HR</option>
-            <option value="Finance">Finance</option>
-            <option value="Marketing">Marketing</option>
-          </select>
-          <small style="color: #666; display: block; margin-top: 5px"
-            >Hold Ctrl to select multiple</small
-          >
-        </div>
-
-        <div class="form-group">
-          <label for="salary">Basic Salary:</label>
-          <input type="number" id="salary" name="salary" step="0.01" required />
-        </div>
-
-        <div class="form-actions">
-          <button type="submit" class="btn-submit">Add Employee</button>
-          <button
-            type="button"
-            class="btn-cancel"
-            onclick="window.location.href = '/'"
-          >
-            Cancel
+  <body class="form-body">
+    <main class="form-page">
+      <section class="form-shell">
+        <div class="form-top">
+          <button class="btn-back" type="button" onclick="window.location.href='/'">
+            &larr; Back
           </button>
+          <div class="form-title-block">
+            <p class="kicker">Payroll Center</p>
+            <h1>Add New Employee</h1>
+            <p>Create a payroll profile with role, department, and salary data.</p>
+          </div>
         </div>
-      </form>
-    </div>
+
+        <form action="/add" method="POST" class="employee-form">
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="name">Employee Name</label>
+              <input type="text" id="name" name="name" required />
+            </div>
+
+            <div class="form-group">
+              <label for="position">Position</label>
+              <input type="text" id="position" name="position" required />
+            </div>
+
+            <div class="form-group">
+              <label for="dob">Date of Birth</label>
+              <input type="date" id="dob" name="dob" required />
+            </div>
+
+            <div class="form-group">
+              <label for="salary">Basic Salary</label>
+              <input type="number" id="salary" name="salary" step="0.01" required />
+            </div>
+
+            <div class="dropdown field-wide">
+              <label for="department">Department</label>
+              <select id="department" name="department" multiple required>
+                <option value="IT">IT</option>
+                <option value="HR">HR</option>
+                <option value="Finance">Finance</option>
+                <option value="Marketing">Marketing</option>
+              </select>
+              <p class="field-hint">Hold Ctrl (Windows) or Cmd (Mac) to select multiple departments.</p>
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn-submit">Add Employee</button>
+            <button type="button" class="btn-cancel" onclick="window.location.href='/'">
+              Cancel
+            </button>
+          </div>
+        </form>
+      </section>
+    </main>
   </body>
 </html>

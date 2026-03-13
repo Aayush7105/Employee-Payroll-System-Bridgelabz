@@ -1,57 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Employee</title>
-    <link rel="stylesheet" href="/style.css">
-</head>
-<body>
-    <div class="edit-container">
-        <div class="add-heading">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit Employee</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body class="form-body">
+    <main class="form-page">
+      <section class="form-shell">
+        <div class="form-top">
+          <button class="btn-back" type="button" onclick="window.location.href='/'">
+            &larr; Back
+          </button>
+          <div class="form-title-block">
+            <p class="kicker">Payroll Center</p>
             <h1>Edit Employee</h1>
+            <p>Update role, department, and salary details for this employee.</p>
+          </div>
         </div>
-        
+
         <form action="/edit/<%= employee.id %>" method="POST" class="employee-form">
+          <div class="form-grid">
             <div class="form-group">
-                <label for="name">Employee Name:</label>
-                <input type="text" id="name" name="name" value="<%= employee.name %>" required>
-            </div>
-            
-            <div class="form-group">
-                <label for="position">Position:</label>
-                <input type="text" id="position" name="position" value="<%= employee.position %>" required>
+              <label for="name">Employee Name</label>
+              <input type="text" id="name" name="name" value="<%= employee.name %>" required />
             </div>
 
             <div class="form-group">
-                <label for="dob">Date of Birth:</label>
-                <input type="date" id="dob" name="dob" value="<%= employee.dob || '' %>" required>
+              <label for="position">Position</label>
+              <input type="text" id="position" name="position" value="<%= employee.position %>" required />
             </div>
-            
-            <div class="dropdown">
-                <label for="department">Department:</label>
-                <select id="department" name="department" multiple required>
-                    <% 
-                    const departments = ['IT', 'HR', 'Finance', 'Marketing'];
-                    const selectedDepts = Array.isArray(employee.department) ? employee.department : [employee.department];
-                    %>
-                    <% departments.forEach(dept => { %>
-                        <option value="<%= dept %>" <%= selectedDepts.includes(dept) ? 'selected' : '' %>><%= dept %></option>
-                    <% }); %>
-                </select>
-                <small style="color: #666; display: block; margin-top: 5px;">Hold Ctrl to select multiple</small>
-            </div>
-            
+
             <div class="form-group">
-                <label for="salary">Basic Salary:</label>
-                <input type="number" id="salary" name="salary" step="0.01" value="<%= employee.salary %>" required>
+              <label for="dob">Date of Birth</label>
+              <input type="date" id="dob" name="dob" value="<%= employee.dob || '' %>" required />
             </div>
-            
-            <div class="form-actions">
-                <button type="submit" class="btn-submit">Update Employee</button>
-                <button type="button" class="btn-cancel" onclick="window.location.href='/'">Cancel</button>
+
+            <div class="form-group">
+              <label for="salary">Basic Salary</label>
+              <input
+                type="number"
+                id="salary"
+                name="salary"
+                step="0.01"
+                value="<%= employee.salary %>"
+                required
+              />
             </div>
+
+            <div class="dropdown field-wide">
+              <label for="department">Department</label>
+              <select id="department" name="department" multiple required>
+                <% const departments = ['IT', 'HR', 'Finance', 'Marketing']; %>
+                <% const selectedDepts = Array.isArray(employee.department) ? employee.department : [employee.department]; %>
+                <% departments.forEach((dept) => { %>
+                <option value="<%= dept %>" <%= selectedDepts.includes(dept) ? 'selected' : '' %>>
+                  <%= dept %>
+                </option>
+                <% }) %>
+              </select>
+              <p class="field-hint">Hold Ctrl (Windows) or Cmd (Mac) to select multiple departments.</p>
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn-submit">Update Employee</button>
+            <button type="button" class="btn-cancel" onclick="window.location.href='/'">
+              Cancel
+            </button>
+          </div>
         </form>
-    </div>
-</body>
+      </section>
+    </main>
+  </body>
 </html>
